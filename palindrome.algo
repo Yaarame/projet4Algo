@@ -1,0 +1,47 @@
+// algorithme nous permettant de verifier si un mot est un palindrome ou non //
+
+ALGORITHM palindrome
+VAR
+    i,j,taille : INTEGER;
+    mot : STRING[taille];
+    compt : INTEGER := 0;
+
+BEGIN
+    // on recupere d'abord la longueur du mot dans taille //
+    write("Donner la taille du mot");
+    read(taille);
+
+    // on donne a la var j taille -1 //
+    j := (taille -1);
+
+    // on recupere le mot dans la chaine mot //
+    write("Entrer le mot");
+    read(mot);
+
+    // on convertie la chaine en majuscule ou minuscule //
+    mot := toUpper(mot);
+    
+    // on verifie si la taillle est bien differente de 1 et si le premier caracere est = au dernier caractere //
+    IF (taille <> 1 && (mot[0] <> mot[taille -1])) THEN
+        break;
+
+        // au cas ou le 1 caractere est = au dernier caractere et k taille chaine > 1 //
+        // on compare les caracteres de la gauche vs la droite et vice versa //
+       ELSE
+
+       // i varie de 0 a taille -1 //
+            FOR i FROM 0 TO taille -1 STEP 1  DO
+        // j varie de taille -1 a 0 //
+                IF (mot[i] = mot[j]) THEN
+        // a chaq comparaison compt est incremente //        
+                    compt++;
+                    j--;
+                END_IF
+            END_FOR
+    END_IF
+    IF (compt = taille || taille = 1 || mot ="") THEN
+            write("on a un palindrome");
+    END_IF
+    ELSE
+        write(" on a pas un palindrome");
+END
